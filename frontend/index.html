@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Recognition System</title>
+    <link rel="stylesheet" href="static/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-user-circle"></i> Face Recognition System</h1>
+            <p class="subtitle">Capture your photo and find matches instantly</p>
+        </header>
+
+        <div class="camera-container">
+            <div class="video-wrapper">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="controls">
+                <button id="capture-btn">
+                    <i class="fas fa-camera"></i> Take Photo & Search
+                </button>
+
+                <div class="tolerance-control">
+                    <label for="tolerance">Matching Sensitivity:</label>
+                    <input type="range" id="tolerance" min="0.4" max="0.8" step="0.05" value="0.6">
+                    <span id="tolerance-value">0.6</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="results">
+            <div class="result-section">
+                <h2><i class="fas fa-portrait"></i> Your Photo</h2>
+                <div id="uploaded-photo" class="empty-state">
+                    <i class="fas fa-user"></i>
+                    <p>Your captured photo will appear here</p>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h2><i class="fas fa-images"></i> Matched Photos</h2>
+                <div id="matched-photos" class="gallery empty-state">
+                    <i class="fas fa-search"></i>
+                    <p>Matching results will appear here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+
+</html>
