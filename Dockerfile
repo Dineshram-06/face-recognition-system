@@ -1,15 +1,21 @@
+# Use official Python base image
 FROM python:3.10-slim
 
+# Set working directory
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y libgl1-mesa-glx && apt-get clean
+# Copy backend code
+COPY backend/ ./backend/
+COPY backend/requirements.txt ./
 
-COPY app/ ./app/
-COPY frontend/ ./frontend/
-
-COPY app/requirements.txt .
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8080
+# Copy frontend
+COPY frontend/ ./frontend/
 
-CMD ["python", "app/app.py"]
+# Expose Flask port
+EXPOSE 5000
+
+# Start the Flask app
+CMD ["python", "./backend/app.py"]
